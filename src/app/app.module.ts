@@ -15,12 +15,30 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component'
+import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
+import { LeaderdetailComponent } from './leaderdetail/leaderdetail.component';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     AppRootComponent,
-    DishdetailComponent
+    DishdetailComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    AboutComponent,
+    ContactComponent,
+    LeaderdetailComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +49,11 @@ import { DishService } from './services/dish.service';
     MatToolbarModule ,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule,
+    FormsModule
   ],
-  providers: [ DishService],
+  providers: [ DishService , PromotionService, LeaderService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
