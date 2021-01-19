@@ -11,8 +11,14 @@ import { AppRootComponent } from './app-root/app-root.component';
 import { MatListModule }from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
 import { HeaderComponent } from './header/header.component';
@@ -25,7 +31,8 @@ import { ContactComponent } from './contact/contact.component'
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { LeaderdetailComponent } from './leaderdetail/leaderdetail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LeaderdetailComponent
+    LeaderdetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,12 +55,22 @@ import { FormsModule } from '@angular/forms';
     FlexLayoutModule,
     MatListModule,
     MatToolbarModule ,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatInputModule,
+    MatCheckboxModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
+  entryComponents: [
+    LoginComponent
+],
   providers: [ DishService , PromotionService, LeaderService],
   bootstrap: [AppComponent]
 })

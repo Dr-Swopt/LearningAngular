@@ -2,22 +2,13 @@ $background-dark: #512DA8;
 $background-light: #9575CD;
 $background-pale: #D1C4E9;
 $background-moredark: #4527A0;
-.full-width {
-  width: 95%
-}
 
-.half-width {
-  width: 45%
-}
 
-.form-size {
-  width: 75%
-}
-#sbtbtn:disabled {
+#loginbtn:disabled {
   background-color: $background-pale;
 }
 
-#sbtbtn {
+#loginbtn {
   background-color: $background-light;
   color: aliceblue;
 }

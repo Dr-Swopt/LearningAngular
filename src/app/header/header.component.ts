@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faFacebook, faGoogle, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faAddressCard, faBars, faHome, faInfo } from '@fortawesome/free-solid-svg-icons';
-
+import { faAddressCard, faBars, faHome, faInfo, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,10 +13,15 @@ export class HeaderComponent implements OnInit {
   faAddressCard = faAddressCard;
   faInfo = faInfo;
   faBars = faBars;
+  faSignOut = faSignInAlt;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openLoginForm() {
+    this.dialog.open(LoginComponent, {width: '500px', height: '450px'});
   }
 
 }
