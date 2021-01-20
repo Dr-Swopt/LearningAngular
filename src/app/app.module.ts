@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
@@ -34,6 +35,8 @@ import { LeaderdetailComponent } from './leaderdetail/leaderdetail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
+import { PromiseComponent } from './promise/promise.component';
+import { PokemondetailComponent } from './pokemondetail/pokemondetail.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { DynamicsComponent } from './dynamics/dynamics.component';
     ContactComponent,
     LeaderdetailComponent,
     LoginComponent,
-    DynamicsComponent
+    DynamicsComponent,
+    PromiseComponent,
+    PokemondetailComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import { DynamicsComponent } from './dynamics/dynamics.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatListModule,
+    MatProgressSpinnerModule,
     MatToolbarModule ,
     MatDialogModule,
     MatFormFieldModule,

@@ -4,22 +4,22 @@
 
   <div fxFlex>
     <div>
-      <h3>Menu</h3>
+      <h3>Gotta Catch Them All</h3>
       <hr>
     </div>
   </div>
 
-  <div fxFlex *ngIf="dishes">
+  <div fxFlex *ngIf="pokemons">
     <mat-grid-list cols="2" rowHeight="200px">
-      <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
-        <img height="200px" src={{dish.image}} alt={{dish.name}}>
+      <mat-grid-tile *ngFor="let pokemon of pokemons" [routerLink]="['/pokemondetail', pokemon.id]">
+        <img height="200px" src={{pokemon.src}} alt={{pokemon.name}}>
         <mat-grid-tile-footer>
-          <h1>{{dish.name | uppercase}}</h1>
+          <h1>{{pokemon.name | uppercase}}</h1>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div fxFlex [hidden]="dishes">
+  <div fxFlex [hidden]="pokemons">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 

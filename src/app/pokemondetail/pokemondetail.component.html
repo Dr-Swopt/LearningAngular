@@ -7,16 +7,16 @@ fxLayoutAlign.gt-md="space-around center"
 fxLayoutGap="10px"
 fxLayoutGap.xs="0">
 
-<div fxFlex="80" *ngIf="leader">
+<div fxFlex="80" *ngIf="pokemon">
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <h3>{{leader.name | uppercase}}</h3>
+        <h3>{{pokemon.name | uppercase}}</h3>
       </mat-card-title>
     </mat-card-header>
-    <img mat-card-image src={{leader.image}} alt={{leader.name}}>
+    <img mat-card-image src={{pokemon.src}} alt={{pokemon.name}}>
     <mat-card-content>
-      <p>{{leader.description}}
+      <p>{{pokemon.description}}
       </p>
     </mat-card-content>
     <mat-card-actions>
@@ -26,7 +26,7 @@ fxLayoutGap.xs="0">
     </mat-card-actions>
   </mat-card>
 </div>
-<div fxFlex [hidden]="leader">
+<div fxFlex [hidden]="pokemon">
   <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
 </div>
 
