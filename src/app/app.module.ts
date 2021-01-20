@@ -33,6 +33,7 @@ import { LeaderService } from './services/leader.service';
 import { LeaderdetailComponent } from './leaderdetail/leaderdetail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { DynamicsComponent } from './dynamics/dynamics.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     ContactComponent,
     LeaderdetailComponent,
-    LoginComponent
+    LoginComponent,
+    DynamicsComponent
   ],
   imports: [
     BrowserModule,

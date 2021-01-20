@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faAddressCard, faBars, faHome, faInfo, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faBars, faHome, faInfo, faJedi, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 @Component({
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   faInfo = faInfo;
   faBars = faBars;
   faSignOut = faSignInAlt;
+  faDynamics = faJedi;
 
   constructor(public dialog: MatDialog) { }
 
