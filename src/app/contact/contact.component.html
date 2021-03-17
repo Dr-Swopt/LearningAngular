@@ -79,5 +79,18 @@
         <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
       </form>
     </div>
+    <!-- <div *ngIf="activeSpinner">
+      <mat-spinner [hidden]="feedbackComment"></mat-spinner><h4>Loading . . . Please Wait</h4>
+    </div> -->
+
+    <div *ngIf="activeFeedbackPreview">
+      <h3>Your Submission</h3>
+      <p>First Name: {{feedbackComment.firstName}}</p>
+      <p>Last Name: {{feedbackComment.lastName}}</p>
+      <p>Telephone: {{feedbackComment.telNum}}</p>
+      <p>Contact You?: {{feedbackComment.agree}}</p>
+      <p>Contact type: {{feedbackComment.contactType}}</p>
+      <p>Message: {{feedbackComment.message}}</p>
+    </div>
   </div>
 </div>

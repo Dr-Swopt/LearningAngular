@@ -20,11 +20,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -37,7 +38,10 @@ import { LoginComponent } from './login/login.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
 import { PromiseComponent } from './promise/promise.component';
 import { PokemondetailComponent } from './pokemondetail/pokemondetail.component';
-
+import { AuthService } from './services/auth.service';
+import { ProcessHTTPMsgService } from './services/ProcessHTTPMsg.service';
+import { FeedbackService } from './services/feedback.service';
+import { HighlightDirective } from './directives/highlight.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +57,8 @@ import { PokemondetailComponent } from './pokemondetail/pokemondetail.component'
     LoginComponent,
     DynamicsComponent,
     PromiseComponent,
-    PokemondetailComponent
+    PokemondetailComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,7 @@ import { PokemondetailComponent } from './pokemondetail/pokemondetail.component'
     MatFormFieldModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatSliderModule,
     MatInputModule,
     MatCheckboxModule,
     MatGridListModule,
@@ -74,12 +80,13 @@ import { PokemondetailComponent } from './pokemondetail/pokemondetail.component'
     MatButtonModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   entryComponents: [
     LoginComponent
 ],
-  providers: [ DishService , PromotionService, LeaderService],
+  providers: [ DishService , PromotionService, LeaderService, AuthService, ProcessHTTPMsgService, FeedbackService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -11,7 +11,7 @@
 
   <div fxFlex *ngIf="pokemons">
     <mat-grid-list cols="2" rowHeight="200px">
-      <mat-grid-tile *ngFor="let pokemon of pokemons" [routerLink]="['/pokemondetail', pokemon.id]">
+      <mat-grid-tile *ngFor="let pokemon of pokemons" [routerLink]="['/pokemondetail', pokemon.id]" appHighlight>
         <img height="200px" src={{pokemon.src}} alt={{pokemon.name}}>
         <mat-grid-tile-footer>
           <h1>{{pokemon.name | uppercase}}</h1>
@@ -19,9 +19,14 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div fxFlex [hidden]="pokemons">
+  <div fxFlex [hidden]="pokemons || errMess">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
+
 
 
 </div>
