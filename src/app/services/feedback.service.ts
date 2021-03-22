@@ -4,6 +4,7 @@ import {ProcessHTTPMsgService} from './ProcessHTTPMsg.service';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import { Feedback } from '../shared/feedback';
+import { baseURL } from '../shared/baseUrl';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -13,12 +14,16 @@ const httpOptions = {
 @Injectable()
 export class FeedbackService {
 
-  baseURL = "http://localhost:3000/feedback";
-    constructor(private http: HttpClient,
-                private processHTTPMsgService: ProcessHTTPMsgService) { }
+  constructor(private http: HttpClient,
+    private processHTTPMsgService: ProcessHTTPMsgService) { }
 
-     putFeedback(feedback: Feedback) {
-        return this.http.post(this.baseURL, feedback, httpOptions)
-            .pipe(catchError(this.processHTTPMsgService.handleError));
-     }
+  submitFeedback(feedback: Feedback): Observable<Feedback> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.post<Feedback>(baseURL + 'feedback/', feedback, httpOptions)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
 }

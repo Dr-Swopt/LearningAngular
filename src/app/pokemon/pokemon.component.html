@@ -11,7 +11,7 @@
 
   <div fxFlex *ngIf="pokemons">
     <mat-grid-list cols="2" rowHeight="200px">
-      <mat-grid-tile *ngFor="let pokemon of pokemons" [routerLink]="['/pokemondetail', pokemon.id]" appHighlight>
+      <mat-grid-tile *ngFor="let pokemon of pokemons" [routerLink]="['/pokemondetail', pokemon._id]" appHighlight>
         <img height="200px" src={{pokemon.src}} alt={{pokemon.name}}>
         <mat-grid-tile-footer>
           <h1>{{pokemon.name | uppercase}}</h1>

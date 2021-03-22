@@ -1,13 +1,16 @@
 <mat-toolbar color="primary">
-  <span><img src="/assets/images/logo.png" height=30 width=41></span>
+  <span><img src="https://124.13.174.103:5000/images/logo.png" height=30 width=41></span>
   <a mat-button routerLink="/home" routerLinkActive="active"><fa-icon [icon]="faHome"></fa-icon> Home</a>
   <a mat-button routerLink="/about" routerLinkActive="active"><fa-icon [icon]="faInfo"></fa-icon> About</a>
   <a mat-button routerLink="/menu" routerLinkActive="active"><fa-icon [icon]="faBars"></fa-icon> Menu</a>
+  <a mat-button routerLink="/favourites" routerLinkActive="active"><fa-icon [icon]="faLove"></fa-icon> Favourites</a>
   <a mat-button routerLink="/contactus" routerLinkActive="active"><fa-icon [icon]="faAddressCard"></fa-icon> Contact</a>
   <a mat-button [routerLink]="['/dynamics']" routerLinkActive="router-link-active"><fa-icon [icon]="faDynamics"></fa-icon>Dynamical</a>
-  <a mat-button [routerLink]="['/promise']" routerLinkActive="router-link-active"><fa-icon [icon]="faPromise"></fa-icon>Promises</a>
+  <a mat-button [routerLink]="['/pokemon']" routerLinkActive="router-link-active"><fa-icon [icon]="faPromise"></fa-icon>Pokemon</a>
   <span class="flex-spacer"></span>
-  <a mat-button (click)="openLoginForm()"><fa-icon [icon]="faSignOut"></fa-icon> Login</a>
+  <a *ngIf="!username" mat-button (click)="openLoginForm()"><fa-icon [icon]="faLogin"></fa-icon> Login</a>
+  <a *ngIf="username">{{username}}</a>
+  <a *ngIf="username" mat-button (click)="logOut()"><fa-icon [icon]="faLogout"></fa-icon> Logout</a>
 </mat-toolbar>
 
 <div class="container jumbotron"
@@ -25,7 +28,8 @@
       will tickle your culinary senses!</p>
   </div>
   <div fxFlex fxFlex.gt-sm="20%">
-    <img src="/assets/images/logo.png" alt="Logo">
+    <img src="https://124.13.174.103:5000/images/logo.png" alt="Logo">
   </div>
   <div fxFlex></div>
 </div>
+

@@ -25,23 +25,26 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component'
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
-import { LeaderdetailComponent } from './leaderdetail/leaderdetail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
-import { PromiseComponent } from './promise/promise.component';
+import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemondetailComponent } from './pokemondetail/pokemondetail.component';
 import { AuthService } from './services/auth.service';
 import { ProcessHTTPMsgService } from './services/ProcessHTTPMsg.service';
 import { FeedbackService } from './services/feedback.service';
 import { HighlightDirective } from './directives/highlight.directive';
+import { baseURL } from './shared/baseUrl';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthInterceptor, UnauthorizedInterceptor } from './services/auth.interceptor';
+import { FavouriteComponent } from './favourite/favourite.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,12 +56,12 @@ import { HighlightDirective } from './directives/highlight.directive';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LeaderdetailComponent,
     LoginComponent,
     DynamicsComponent,
-    PromiseComponent,
+    PokemonComponent,
     PokemondetailComponent,
-    HighlightDirective
+    HighlightDirective,
+    FavouriteComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,17 @@ import { HighlightDirective } from './directives/highlight.directive';
   entryComponents: [
     LoginComponent
 ],
-  providers: [ DishService , PromotionService, LeaderService, AuthService, ProcessHTTPMsgService, FeedbackService],
+  providers: [ DishService , PromotionService, LeaderService, AuthService, ProcessHTTPMsgService,{provide: 'baseURL', useValue: baseURL}, FeedbackService, AuthService,
+  AuthGuardService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: UnauthorizedInterceptor,
+    multi: true
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

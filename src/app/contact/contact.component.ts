@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { faSkype } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faFax, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { flyInOut } from '../animations/animation';
+import { expand, flyInOut } from '../animations/animation';
 import { FeedbackService } from '../services/feedback.service';
 import { Feedback, ContactType } from '../shared/feedback';
 
@@ -13,13 +13,15 @@ import { Feedback, ContactType } from '../shared/feedback';
   host: {
     '[@flyInOut]': 'true',
     'style': 'display: block;'
-    },
-    animations: [
-      flyInOut()
-    ]
+  },
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
 export class ContactComponent implements OnInit {
 
+  @ViewChild('fform') feedbackFormDirective: any;
   formErrors : any = {
     'firstname': '',
     'lastname': '',
@@ -56,17 +58,17 @@ export class ContactComponent implements OnInit {
   feedbackForm!: FormGroup;
   feedback!: Feedback;
   contactType = ContactType;
-  feedbackComment! : any ;
   feedErrMess!: string;
   activeSpinner: boolean = false;
-  activeFeedbackPreview = false;
+  submitted = null as any;
+  showForm = true;
 
   constructor(private fb: FormBuilder,
     private feedbackService: FeedbackService) {
-    this.createForm();
   }
 
   ngOnInit() {
+    this.createForm();
   }
 
   createForm() {
@@ -86,25 +88,26 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.activeSpinner = true;
-    this.feedbackService.putFeedback(this.feedbackForm.value)
-      .subscribe(data => {
-        this.feedbackComment = data;
-     },
-        errmess => {
-      console.log(<any>errmess);
-    }, () => {
-        this.activeSpinner = false;
-        this.handleFeedbackPreview();
+    this.feedback = this.feedbackForm.value;
+    console.log(this.feedback);
+    this.showForm = false;
+    this.feedbackService.submitFeedback(this.feedback)
+      .subscribe(feedback => {
+         this.submitted = feedback as any;
+         this.feedback = null as any;
+         setTimeout(() => { this.submitted = null; this.showForm = true; }, 5000);
+        },
+        error => console.log(error.status, error.message));
+    this.feedbackForm.reset({
+      firstname: '',
+      lastname: '',
+      telnum: '',
+      email: '',
+      agree: false,
+      contacttype: 'None',
+      message: ''
     });
-    this.feedbackForm.reset();
-  }
-
-  handleFeedbackPreview() {
-    this.activeFeedbackPreview = true;
-    setTimeout(() => {
-      this.activeFeedbackPreview = false;
-    }, 5000);
+    this.feedbackFormDirective.resetForm();
   }
 
   onValueChanged(data?: any) {

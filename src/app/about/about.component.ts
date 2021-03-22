@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { flyInOut } from '../animations/animation';
+import { expand, flyInOut } from '../animations/animation';
 import { LeaderService } from '../services/leader.service';
 import { Leader } from '../shared/leader';
 
@@ -10,20 +10,16 @@ import { Leader } from '../shared/leader';
   host: {
     '[@flyInOut]': 'true',
     'style': 'display: block;'
-    },
-    animations: [
-      flyInOut()
-    ]
+  },
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
 export class AboutComponent implements OnInit {
 
   leaders! : Leader[];
-  selectedLeader!: Leader;
   errMess! : string;
-
-  onSelect(leader: Leader) {
-    this.selectedLeader = leader;
-  }
 
   constructor(private leaderService: LeaderService) { }
 

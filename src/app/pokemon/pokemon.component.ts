@@ -4,9 +4,9 @@ import { PokemonService } from '../services/pokemon.service';
 import { Pokemon } from '../shared/pokemon';
 
 @Component({
-  selector: 'app-promise',
-  templateUrl: './promise.component.html',
-  styleUrls: ['./promise.component.scss'],
+  selector: 'app-pokemon',
+  templateUrl: './pokemon.component.html',
+  styleUrls: ['./pokemon.component.css'],
   host: {
     '[@flyInOut]': 'true',
     'style': 'display: block;'
@@ -15,7 +15,7 @@ import { Pokemon } from '../shared/pokemon';
       flyInOut()
     ]
 })
-export class PromiseComponent implements OnInit {
+export class PokemonComponent implements OnInit {
 
   pokemons!: Pokemon[];
   selectedPokemon!: Pokemon;

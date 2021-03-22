@@ -11,7 +11,7 @@ import { stringify } from "@angular/compiler/src/util";
 } */
 
 export interface Pokemon {
-  id: number;
+  _id: string;
   name?: string;
   src?: string;
   description?: string;
